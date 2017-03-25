@@ -4,7 +4,7 @@ MAINTAINER dimkk@outlook.com
 ADD run.sh /run.sh
 RUN apk --update add mysql-client && \
     mkdir /backup && \
-    chmode +x /run.sh
+    chmod +x /run.sh
 
 ENV CRON_TIME="0 0 * * *" \
     MYSQL_DB="--all-databases"
