@@ -30,8 +30,8 @@ rm -f /backup.sh
 cat <<EOF >> /backup.sh
 #!/bin/bash
 
-if ${AZ_USER} ;then
-    az login --service-principal -u \${AZ_USER} -p \${AZ_SECRET} --tenant \${AZ_AD_TENANT_ID}
+if [ -n ${AZ_USER} ]; then
+    az login --service-principal -u \${AZ_USER} -p "\${AZ_SECRET}" --tenant \${AZ_AD_TENANT_ID}
     az storage directory create -n \${AZ_STORAGE_FOLDER} --share-name \${AZ_STORAGE_SHARE} --connection-string "\${AZ_STORAGE_CS}"
 fi
 
@@ -42,7 +42,7 @@ BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H\%M\%S).sql
 echo "=> Backup started: \${BACKUP_NAME}"
 if ${BACKUP_CMD} ;then
     echo "   Backup succeeded"
-    if ${AZ_USER} ;then
+    if [ -n ${AZ_USER} ]; then
         az storage file upload -s ${AZ_STORAGE_SHARE}/${AZ_STORAGE_FOLDER} --source /backup/\${BACKUP_NAME} --connection-string "\${AZ_STORAGE_CS}"
     fi
 else
@@ -56,7 +56,7 @@ if [ -n "\${MAX_BACKUPS}" ]; then
         BACKUP_TO_BE_DELETED=\$(ls /backup -N1 | sort | head -n 1)
         echo "   Backup \${BACKUP_TO_BE_DELETED} is deleted"
         rm -rf /backup/\${BACKUP_TO_BE_DELETED}
-        if ${AZ_USER} ;then
+        if [ -n ${AZ_USER} ]; then
             az storage file delete -s \${AZ_STORAGE_SHARE} -p \${AZ_STORAGE_FOLDER}/\${BACKUP_TO_BE_DELETED} --connection-string "\${AZ_STORAGE_CS}"
         fi
     done
