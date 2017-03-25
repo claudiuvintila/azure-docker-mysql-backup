@@ -1,13 +1,14 @@
 FROM azuresdk/azure-cli-python:latest
 
 MAINTAINER dimkk@outlook.com
-
+ADD run.sh /run.sh
 RUN apk --update add mysql-client && \
-    mkdir /backup
+    mkdir /backup && \
+    chmode +x /run.sh
 
 ENV CRON_TIME="0 0 * * *" \
     MYSQL_DB="--all-databases"
 
-ADD run.sh /run.sh
+
 VOLUME ["/backup"]
 CMD ["/run.sh"]
