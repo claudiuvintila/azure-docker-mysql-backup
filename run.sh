@@ -30,7 +30,7 @@ rm -f /backup.sh
 cat <<EOF >> /backup.sh
 #!/bin/bash
 
-if ${AZ_USER} then
+if ${AZ_USER} ;then
     az login --service-principal -u \${AZ_USER} -p \${AZ_SECRET} --tenant \${AZ_AD_TENANT_ID}
     az storage directory create -n \${AZ_STORAGE_FOLDER} --share-name \${AZ_STORAGE_SHARE} --connection-string "\${AZ_STORAGE_CS}"
 fi
@@ -98,4 +98,4 @@ fi
 echo "${CRON_TIME} /backup.sh >> /mysql_backup.log 2>&1" > /crontab.conf
 crontab  /crontab.conf
 echo "=> Running cron job"
-exec cron -f
+exec crond
