@@ -10,9 +10,9 @@ This image runs mysqldump to backup data using cronjob to folder `/backup` and a
         --env MYSQL_USER=admin \
         --env MYSQL_PASS=password \
         --volume host.folder:/backup
-        --env AZ_USER=[Application ID] \
+        --env AZ_USER=[Application ID GUID] \
         --env AZ_SECRET=[Application KEY] \
-        --env AZ_AD_TENANT_ID=[Tenant AD ID] \
+        --env AZ_AD_TENANT_ID=[Tenant AD ID GUID] \
         --env AZ_STORAGE_SHARE=[Share name] \
         --env AZ_STORAGE_FOLDER=[Folder to save] \
         --env AZ_STORAGE_CS=[Storage connection string] \

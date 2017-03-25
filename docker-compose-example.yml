@@ -8,11 +8,11 @@ services:
       - MYSQL_PORT=27017 
       - MYSQL_USER=admin 
       - MYSQL_PASS=password 
-      - AZ_USER=[Application ID] 
-      - AZ_SECRET=[Application KEY] 
-      - AZ_AD_TENANT_ID=[Tenant AD ID] 
+      - AZ_USER=[Application ID GUID] 
+      - 'AZ_SECRET=[Application KEY]'
+      - AZ_AD_TENANT_ID=[Tenant AD ID GUID] 
       - AZ_STORAGE_SHARE=[Share name] 
       - AZ_STORAGE_FOLDER=[Folder to save] 
-      - AZ_STORAGE_CS=[Storage connection string] 
+      - 'AZ_STORAGE_CS=[Storage connection string]'
     volumes: 
       - /backup:/backup
