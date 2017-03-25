@@ -16,9 +16,9 @@ This image runs mysqldump to backup data using cronjob to folder `/backup` and a
         --env AZ_STORAGE_SHARE=[Share name] \
         --env AZ_STORAGE_FOLDER=[Folder to save] \
         --env AZ_STORAGE_CS=[Storage connection string] \
-        tutum/mysql-backup
+        dimkk/azure-docker-mysql-backup
 
-Moreover, if you link `tutum/mysql-backup` to a mysql container(e.g. `tutum/mysql`) with an alias named mysql, this image will try to auto load the `host`, `port`, `user`, `pass` if possible.
+Moreover, if you link `dimkk/azure-docker-mysql-backup` to a mysql container(e.g. `tutum/mysql`) with an alias named mysql, this image will try to auto load the `host`, `port`, `user`, `pass` if possible.
 
     docker run -d -p 27017:27017 -p 28017:28017 -e MYSQL_PASS="mypass" --name mysql tutum/mysql
     docker run -d --link mysql:mysql -v host.folder:/backup tutum/mysql-backup
