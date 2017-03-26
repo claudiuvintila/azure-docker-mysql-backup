@@ -36,7 +36,7 @@ Moreover, if you link `dimkk/azure-docker-mysql-backup` to a mysql container(e.g
     INIT_BACKUP     if set, create a backup when the container starts
     INIT_RESTORE_LATEST if set, restores latest backup
     AZ_USER         azure application guid, to get it, and AZ_SECRET, if set, azure save/delete will work [read here](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal)
-    AZ_SECRET=      azure application secret
+    AZ_SECRET       azure application secret
     AZ_AD_TENANT_ID azure Active Directory Tenant ID, you can find it here -> https://manage.windowsazure.com/serco.onmicrosoft.com#Workspaces/ActiveDirectoryExtension/Directory/**<Tenant ID GUID>**/directoryQuickStart
     AZ_STORAGE_FOLDER azure folder in share to save backups
     AZ_STORAGE_SHARE azure share name - create it yourself!
