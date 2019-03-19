@@ -1,6 +1,6 @@
 FROM azuresdk/azure-cli-python:latest
 
-MAINTAINER dimkk@outlook.com
+MAINTAINER claudiu.vintila@gmail.com
 ADD run.sh /run.sh
 RUN apk --update add mysql-client && \
     mkdir /backup && \
